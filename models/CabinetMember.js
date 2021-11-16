@@ -6,8 +6,8 @@ const CabinetMember = new Schema({
   order: { required: true, type: Number },
   name: { required: true, type: String }, 
   position: { required: true, type: String },
-  termStart: { required: true, type: Date }, 
-  termEnd: { required: true, type: Date }
+  termStart: { required: false, type: Date }, 
+  termEnd: { required: false, type: Date }
 });
 
 

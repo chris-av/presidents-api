@@ -5,9 +5,7 @@ const {
 module.exports = {
   Query: {
 
-    hello: () => 'hello!',
     presidents: () => {
-
       try {
         return President.find().sort('order');
       } catch (err) {

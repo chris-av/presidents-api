@@ -4,14 +4,17 @@ const {
 
 module.exports = {
   Query: {
+
     hello: () => 'hello!',
     presidents: () => {
+
       try {
-        return President.find();
+        return President.find().sort('order');
       } catch (err) {
         return err;
       }
     },
+
     president: async (_, { order }) => {
       try {
         const result = await President.find({ order: order });
@@ -21,11 +24,13 @@ module.exports = {
       }
     }
   },
+
   Mutation: {
-    createPresident: async (_, { name }) => {
-      const pres = new President({ name });
+    createPresident: async (_, { name, order, termStart, termEnd }) => {
+      const pres = new President({ name, order, termStart, termEnd });
       await pres.save();
       return pres;
     }
   }
+
 }

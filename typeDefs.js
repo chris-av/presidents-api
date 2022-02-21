@@ -25,7 +25,7 @@ module.exports = gql`
   }
 
   type Mutation {
-    createPresident(name: String!): President!
+    createPresident(name: String!, order: Int!, termStart: String!, termEnd: String!): President!
   }
 
 `;

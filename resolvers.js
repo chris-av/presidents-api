@@ -26,11 +26,18 @@ module.exports = {
   },
 
   Mutation: {
+
     createPresident: async (_, { name, order, termStart, termEnd }) => {
       const pres = new President({ name, order, termStart, termEnd });
       await pres.save();
       return pres;
+    },
+
+    deletePresident: async (_, { id }) => {
+      const pres = await President.findOneAndDelete({ _id: id });
+      return pres;
     }
+
   }
 
 }

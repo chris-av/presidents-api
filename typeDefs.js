@@ -3,7 +3,6 @@ const { gql } = require("apollo-server-express");
 module.exports = gql`
 
   type Query {
-    hello: String!
     presidents: [President!]!
     president(order: Int): [President]
   }
@@ -26,6 +25,7 @@ module.exports = gql`
 
   type Mutation {
     createPresident(name: String!, order: Int!, termStart: String!, termEnd: String!): President!
+    deletePresident(id: String!): President!
   }
 
 `;

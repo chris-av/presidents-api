@@ -5,9 +5,18 @@ const {
 module.exports = {
   Query: {
 
-    presidents: () => {
+    presidents: async () => {
       try {
-        return President.find().sort('order');
+        const result = await President.aggregate([{
+          $lookup: {
+            from: "cabinet-members",
+            localField: "order",
+            foreignField: "order",
+            as: "cabinet"
+          }
+        }]).sort('order');
+        console.log(result)
+        return result;
       } catch (err) {
         return err;
       }
@@ -15,7 +24,14 @@ module.exports = {
 
     president: async (_, { order }) => {
       try {
-        const result = await President.find({ order });
+        const result = await President.aggregate([{
+          $lookup: {
+            from: "cabinet-members",
+            localField: "order",
+            foreignField: "order",
+            as: "cabinet"
+          }
+        }]).match({ order });
         return result;
       } catch (err) {
         return err;

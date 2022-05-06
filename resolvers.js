@@ -1,5 +1,5 @@
 const {
-  President
+  President, CabinetMember
 } = require("./models/_models");
 
 module.exports = {
@@ -15,12 +15,31 @@ module.exports = {
 
     president: async (_, { order }) => {
       try {
-        const result = await President.find({ order: order });
+        const result = await President.find({ order });
+        return result;
+      } catch (err) {
+        return err;
+      }
+    },
+
+    cabinets: async () => {
+      try {
+        const result = await CabinetMember.find().sort('order');
+        return result;
+      } catch (err) {
+        return err;
+      }
+    },
+
+    cabinet: async (_, { order }) => {
+      try {
+        const result = await CabinetMember.find({ order });
         return result;
       } catch (err) {
         return err;
       }
     }
+
   },
 
   Mutation: {

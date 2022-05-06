@@ -10,7 +10,7 @@ module.exports = gql`
   }
 
   type President {
-    id: ID!
+    _id: ID!
     order: Int
     name: String
     termStart: String

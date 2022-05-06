@@ -15,7 +15,6 @@ module.exports = {
             as: "cabinet"
           }
         }]).sort('order');
-        console.log(result)
         return result;
       } catch (err) {
         return err;

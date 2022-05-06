@@ -15,7 +15,7 @@ module.exports = gql`
     name: String
     termStart: String
     termEnd: String
-    CabinetMember: [CabinetMember]
+    cabinet: [CabinetMember]
   }
 
   type CabinetMember {

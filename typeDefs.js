@@ -5,6 +5,8 @@ module.exports = gql`
   type Query {
     presidents: [President!]!
     president(order: Int): [President]
+    cabinets: [CabinetMember!]!
+    cabinet(order: Int): [CabinetMember]
   }
 
   type President {
@@ -13,10 +15,12 @@ module.exports = gql`
     name: String
     termStart: String
     termEnd: String
-    Cabinet: [Cabinet]
+    CabinetMember: [CabinetMember]
   }
 
-  type Cabinet {
+  type CabinetMember {
+    id: ID!
+    order: Int
     name: String
     position: String
     termStart: String

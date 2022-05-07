@@ -19,7 +19,7 @@ module.exports = gql`
   }
 
   type CabinetMember {
-    id: ID!
+    _id: ID!
     order: Int
     name: String
     position: String

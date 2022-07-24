@@ -21,17 +21,35 @@ module.exports = {
       }
     },
 
-    president: async (_, { order }) => {
+    president: async (_, { order, id }) => {
       try {
-        const result = await President.aggregate([{
-          $lookup: {
-            from: "cabinet-members",
-            localField: "order",
-            foreignField: "order",
-            as: "cabinet"
-          }
-        }]).match({ order });
-        return result;
+
+        if (order) {
+          const result = await President.aggregate([{
+            $lookup: {
+              from: "cabinet-members",
+              localField: "order",
+              foreignField: "order",
+              as: "cabinet"
+            }
+          }]).match({ order });
+          return result;
+        }
+
+        if (id) {
+          const tmp = await President.find({ _id: id });
+          const order = tmp[0].order;
+          const result = await President.aggregate([{
+            $lookup: {
+              from: "cabinet-members",
+              localField: "order",
+              foreignField: "order",
+              as: "cabinet"
+            }
+          }]).match({ order });
+          return result;
+        }
+
       } catch (err) {
         return err;
       }

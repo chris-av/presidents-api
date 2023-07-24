@@ -25,7 +25,7 @@ export default {
       }
     },
 
-    president: async (_, { order, id }) => {
+    president: async (_: any, { order, id }: { order: number; id: string; }) => {
       try {
 
         if (order) {
@@ -68,7 +68,7 @@ export default {
       }
     },
 
-    cabinet: async (_, { order }) => {
+    cabinet: async (_: any, { order }: { order: number; }) => {
       try {
         const result = await CabinetMember.find({ order });
         return result;
@@ -81,13 +81,20 @@ export default {
 
   Mutation: {
 
-    createPresident: async (_, { name, order, termStart, termEnd }) => {
+    createPresident: async (
+      _: any,
+      {
+        name, order, termStart, termEnd
+      }: {
+        name: string; order: number; termStart: string; termEnd: string;
+      }
+    ) => {
       const pres = new President({ name, order, termStart, termEnd });
       await pres.save();
       return pres;
     },
 
-    deletePresident: async (_, { id }) => {
+    deletePresident: async (_: any, { id }: { id: string; }) => {
       const pres = await President.findOneAndDelete({ _id: id });
       return pres;
     }

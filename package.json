@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./dist/index.js",
+    "dev": "nodemon -r ./prod-paths.js ./dist/index.js",
     "tsc": "tsc --watch --pretty"
   },
   "keywords": [],
@@ -20,7 +20,6 @@
     "mongoose": "^7.4.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
     "nodemon": "^3.0.1",
     "tsconfig-paths": "^4.2.0"
   }

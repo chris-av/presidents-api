@@ -1,7 +1,7 @@
 import {
-  President,
   CabinetMember,
-} from './models/_models';
+  President,
+} from '@/models';
 
 export default {
   Query: {

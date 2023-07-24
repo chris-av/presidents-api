@@ -4,9 +4,8 @@
     "module": "commonjs",
     "baseUrl": "./src",
     "paths": {
-      "src/*": ["src/*"]
+      "@/*": ["./*"]
     },
-    "outFile": "index.ts",
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

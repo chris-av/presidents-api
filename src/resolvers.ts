@@ -3,6 +3,9 @@ import {
   President,
 } from '@/models';
 
+
+// each resolver follows the type:
+// resolver(parent, args, contextValue, info) => {}
 export default {
   Query: {
 
